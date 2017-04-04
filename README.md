@@ -2,7 +2,6 @@
 
 This library provides a middleware that returns `HTTP OPTIONS` responses for
 valid application routes defined by your (Proxy :: Proxy api).
-
 It is especially useful when trying to write an API that can be used
 in a cross-origin capacity, as browsers will send "pre-flight" checks
 by requesting OPTIONS for routes that are about to be called.
@@ -21,4 +20,9 @@ Usage:
         $ provideOptions apiProxy
         $ serve apiProxy apiServer
       where
-      policy = simpleCorsResourcePolicy { corsRequestHeaders = [ "content-type" ] }
+      policy = simpleCorsResourcePolicy
+               { corsRequestHeaders = [ "content-type" ] }
+
+## See Also
+
+* <https://github.com/haskell-servant/servant/issues/278>
