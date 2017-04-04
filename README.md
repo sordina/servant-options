@@ -8,11 +8,11 @@ by requesting OPTIONS for routes that are about to be called.
 
 Before:
 
-![](/sordina/servant-options/blob/master/images/before.png?raw=true)
+![](https://github.com/sordina/servant-options/blob/master/images/before.png?raw=true)
 
 After:
 
-![](/sordina/servant-options/blob/master/images/after.png?raw=true)
+![](https://github.com/sordina/servant-options/blob/master/images/after.png?raw=true)
 
 Usage:
 
