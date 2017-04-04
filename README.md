@@ -12,6 +12,7 @@ Usage:
 
     import App
     import Servant
+    import Network.Wai.Middleware.Cors
     import Network.Wai.Middleware.Servant.Options
 
     app :: Application
