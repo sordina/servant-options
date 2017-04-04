@@ -9,16 +9,16 @@ by requesting OPTIONS for routes that are about to be called.
 
 Usage:
 
-  module MyApp where
+    module MyApp where
 
-  import App
-  import Servant
-  import Network.Wai.Middleware.Servant.Options
+    import App
+    import Servant
+    import Network.Wai.Middleware.Servant.Options
 
-  app :: Application
-  app = logStdoutDev
-      $ cors (const $ Just policy)
-      $ provideOptions apiProxy
-      $ serve apiProxy apiServer
-    where
-    policy = simpleCorsResourcePolicy { corsRequestHeaders = [ "content-type" ] }
+    app :: Application
+    app = logStdoutDev
+        $ cors (const $ Just policy)
+        $ provideOptions apiProxy
+        $ serve apiProxy apiServer
+      where
+      policy = simpleCorsResourcePolicy { corsRequestHeaders = [ "content-type" ] }
