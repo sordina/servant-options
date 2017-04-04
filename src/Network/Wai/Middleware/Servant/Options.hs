@@ -5,7 +5,7 @@
 -- A middleware to respond to Options requests for a servant app
 -- very helpful when trying to deal with pre-flight CORS requests.
 --
-module Network.Wai.Middleware.Servant.Options where
+module Network.Wai.Middleware.Servant.Options (provideOptions) where
 
 import Servant
 import Servant.Foreign
