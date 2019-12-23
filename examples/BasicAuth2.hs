@@ -19,7 +19,7 @@ Failing Instance of Class: http://hackage.haskell.org/package/servant-foreign-0.
 
 -}
 
-module BasicAuth where
+module BasicAuth2 where
 
 import Servant
 import Data.Text
@@ -32,7 +32,9 @@ import Data.Time.Clock
 
 import Network.Wai.Middleware.Servant.Options
 
-type UserAPI = BasicAuth "foo-realm" User :> "users" :> QueryParam "sortby" SortBy :> Get '[JSON] [User]
+type UserAPI' = "users" :> QueryParam "sortby" SortBy :> Get '[JSON] [User]
+
+type UserAPI = BasicAuth "foo-realm" User :> UserAPI'
 
 data SortBy = Age | Name deriving (Show, Read, Eq, Ord, Generic)
 
@@ -88,5 +90,4 @@ app us = serveWithContext
 main :: IO ()
 main = do
   us <- dummyUsers
-  -- Works: run 8081 (app us)
-  run 8081 (provideOptions (Proxy :: Proxy UserAPI) (app us))
+  run 8081 (provideOptions (Proxy :: Proxy UserAPI') (app us))
