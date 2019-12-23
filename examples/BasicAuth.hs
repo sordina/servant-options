@@ -7,6 +7,16 @@
 
 -- Usage: curl -vvv -u servant:server localhost:8081/users
 
+{-
+
+Example currently fails with:
+
+    • No instance for (Servant.Foreign.Internal.GenerateList
+                         NoContent (Servant.Foreign.Internal.Foreign NoContent UserAPI))
+        arising from a use of ‘provideOptions’
+
+-}
+
 module Simple where
 
 import Servant
@@ -17,7 +27,6 @@ import GHC.Generics
 import Data.Aeson
 import Network.Wai.Handler.Warp
 import Data.Time.Clock
-import Servant.API.BasicAuth
 
 import Network.Wai.Middleware.Servant.Options
 
