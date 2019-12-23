@@ -8,7 +8,10 @@ author:              Lyndon Maydwell
 maintainer:          maydwell@gmail.com
 copyright:           2017 Lyndon Maydwell
 category:            Web
-extra-source-files:  [ 'README.md' ]
+extra-source-files: 
+  - 'README.md'
+  - 'examples/BasicAuth.hs'
+  - 'examples/Simple.hs'
 
 dependencies:
   - base >= 4.7 && < 5
@@ -20,4 +23,5 @@ dependencies:
   - http-types
 
 library:
-  source-dirs:      src
+  source-dirs:
+    - src
