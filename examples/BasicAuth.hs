@@ -4,6 +4,10 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 
 -- Usage: curl -vvv -u servant:server localhost:8081/users
 
@@ -31,6 +35,8 @@ import Network.Wai.Handler.Warp
 import Data.Time.Clock
 
 import Network.Wai.Middleware.Servant.Options
+
+import Servant.Foreign.Internal
 
 type UserAPI = BasicAuth "foo-realm" User :> "users" :> QueryParam "sortby" SortBy :> Get '[JSON] [User]
 
@@ -84,6 +90,10 @@ app us = serveWithContext
   \case Nothing   -> return us
         Just Age  -> return us
         Just Name -> return (Prelude.reverse us)
+
+instance (HasForeign lang ftype api) => HasForeign lang ftype (BasicAuth a b :> api) where
+  type Foreign ftype (BasicAuth a b :> api) = Foreign ftype api
+  foreignFor lang proxy1 Proxy req = foreignFor lang proxy1 (Proxy :: Proxy api) req
 
 main :: IO ()
 main = do
